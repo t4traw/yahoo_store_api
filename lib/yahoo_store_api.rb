@@ -10,6 +10,9 @@ require 'hashie'
 
 module YahooStoreApi
   class YahooStoreApi
+    ENDPOINT = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/".freeze
+    ACCESS_TOKEN_ENDPOINT = 'https://auth.login.yahoo.co.jp/yconnect/v1/token'.freeze
+
     def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, reflesh_token: nil)
       @seller_id = seller_id
       @application_id = application_id
@@ -42,7 +45,6 @@ module YahooStoreApi
       ary.each_slice(2).map {|k, v| [k.to_sym, v] }.to_h
     end
 
-    ACCESS_TOKEN_ENDPOINT = 'https://auth.login.yahoo.co.jp/yconnect/v1/token'.freeze
     def access_token_connection
       Faraday.new(:url => ACCESS_TOKEN_ENDPOINT) do |c|
         c.adapter Faraday.default_adapter
