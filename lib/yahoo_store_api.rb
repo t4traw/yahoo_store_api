@@ -29,7 +29,7 @@ module YahooStoreApi
 
     ACCESS_TOKEN_ENDPOINT = 'https://auth.login.yahoo.co.jp/yconnect/v1/token'.freeze
     def access_token_connection
-      Faraday.new(:url => ACCESS_TOKEN_ENDPOINT) do |c|
+      Faraday.new(url: ACCESS_TOKEN_ENDPOINT) do |c|
         c.adapter Faraday.default_adapter
         c.authorization :Basic, Base64.strict_encode64("#{@application_id}:#{@application_secret}")
         c.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'

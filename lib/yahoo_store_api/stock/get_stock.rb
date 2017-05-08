@@ -3,7 +3,7 @@ module YahooStoreApi
     include YahooStoreApi::Helper
 
     def get_stock(item_code)
-      conn = Faraday.new(:url => ENDPOINT + 'getStock') do |c|
+      conn = Faraday.new(url: ENDPOINT + 'getStock') do |c|
         c.adapter Faraday.default_adapter
         c.headers['Authorization'] = "Bearer " + @access_token
       end
