@@ -8,10 +8,15 @@ require 'active_model'
 require 'oga'
 require 'hashie'
 
+require 'yahoo_store_api/helper.rb'
+require 'yahoo_store_api/item.rb'
+require 'yahoo_store_api/stock.rb'
+
 module YahooStoreApi
-  class YahooStoreApi
-    ENDPOINT = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/".freeze
-    ACCESS_TOKEN_ENDPOINT = 'https://auth.login.yahoo.co.jp/yconnect/v1/token'.freeze
+  class Client
+    include YahooStoreApi::Helper
+    include YahooStoreApi::Item
+    include YahooStoreApi::Stock
 
     def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, reflesh_token: nil)
       @seller_id = seller_id
@@ -20,31 +25,9 @@ module YahooStoreApi
       @access_token = reflesh_access_token(reflesh_token) || get_access_token(authorization_code)
     end
 
-    def get_item(item_code)
-      conn = Faraday.new(:url => ENDPOINT + 'getItem' + "?seller_id=#{@seller_id}&item_code=" + item_code) do |c|
-        c.adapter Faraday.default_adapter
-        c.headers['Authorization'] = "Bearer " + @access_token
-      end
-      result = conn.get
-      result.body
-    end
-
-    def get_stock(item_code)
-      conn = Faraday.new(:url => ENDPOINT + 'getStock') do |c|
-          c.adapter Faraday.default_adapter
-          c.headers['Authorization'] = "Bearer " + @access_token
-        end
-      result = conn.post {|r| r.body = "seller_id=#{@seller_id}&item_code=#{item_code}"}
-      result.body
-    end
-
     private
 
-    def hash_converter(str)
-      ary = str.body.delete('"{}').split(/[:,]/)
-      ary.each_slice(2).map {|k, v| [k.to_sym, v] }.to_h
-    end
-
+    ACCESS_TOKEN_ENDPOINT = 'https://auth.login.yahoo.co.jp/yconnect/v1/token'.freeze
     def access_token_connection
       Faraday.new(:url => ACCESS_TOKEN_ENDPOINT) do |c|
         c.adapter Faraday.default_adapter
