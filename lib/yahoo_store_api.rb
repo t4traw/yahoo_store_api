@@ -19,7 +19,7 @@ module YahooStoreApi
       @access_token = reflesh_access_token(reflesh_token) || get_access_token(authorization_code)
     end
 
-    def get_item(seller_id, item_code)
+    def get_item(item_code)
       conn = Faraday.new(:url => ENDPOINT + 'getItem' + "?seller_id=#{@seller_id}&item_code=" + item_code) do |c|
         c.adapter Faraday.default_adapter
         c.headers['Authorization'] = "Bearer " + @access_token
@@ -28,7 +28,7 @@ module YahooStoreApi
       result.body
     end
 
-    def get_stock(seller_id, item_code)
+    def get_stock(item_code)
       conn = Faraday.new(:url => ENDPOINT + 'getStock') do |c|
           c.adapter Faraday.default_adapter
           c.headers['Authorization'] = "Bearer " + @access_token
