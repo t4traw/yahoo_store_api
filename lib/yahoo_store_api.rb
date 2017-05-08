@@ -2,6 +2,7 @@ require "yahoo_store_api/version"
 
 require 'yaml'
 require 'faraday'
+require 'active_support'
 require 'active_support/core_ext'
 require 'active_model'
 require 'oga'
