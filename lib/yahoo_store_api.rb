@@ -14,15 +14,16 @@ require 'yahoo_store_api/stock.rb'
 
 module YahooStoreApi
   class Client
+    attr_reader :refresh_token
     include YahooStoreApi::Helper
     include YahooStoreApi::Item
     include YahooStoreApi::Stock
 
-    def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, reflesh_token: nil)
+    def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, refresh_token: nil)
       @seller_id = seller_id
       @application_id = application_id
       @application_secret = application_secret
-      @access_token = reflesh_access_token(reflesh_token) || get_access_token(authorization_code)
+      @access_token = reflesh_access_token(refresh_token) || get_access_token(authorization_code)
     end
 
     private
@@ -40,13 +41,16 @@ module YahooStoreApi
       param = "grant_type=authorization_code&code=#{authorization_code}&redirect_uri=oob"
       obj = access_token_connection.post{|r| r.body = param}
       result = hash_converter(obj)
+      @refresh_token = result[:refresh_token]
+      binding.pry
       result[:access_token]
     end
 
-    def reflesh_access_token(reflesh_token)
-      param = "grant_type=refresh_token&refresh_token=#{reflesh_token}"
+    def reflesh_access_token(refresh_token)
+      param = "grant_type=refresh_token&refresh_token=#{refresh_token}"
       obj = access_token_connection.post{|r| r.body = param}
       result = hash_converter(obj)
+      @refresh_token = refresh_token
       result[:access_token]
     end
 
