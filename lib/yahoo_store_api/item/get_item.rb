@@ -8,7 +8,7 @@ module YahooStoreApi
         c.headers['Authorization'] = "Bearer " + @access_token
       end
       result = conn.get
-      result.body
+      response_parser(result)
     end
   end
 end

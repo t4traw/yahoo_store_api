@@ -8,7 +8,7 @@ module YahooStoreApi
         c.headers['Authorization'] = "Bearer " + @access_token
       end
       result = conn.post {|r| r.body = "seller_id=#{@seller_id}&item_code=#{item_code}"}
-      result.body
+      response_parser(result)
     end
   end
 end
