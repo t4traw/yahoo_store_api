@@ -13,11 +13,10 @@ module YahooStoreApi
       rexml = REXML::Document.new(response.body)
       if rexml.elements['ResultSet/Result']
         response_parser(response)
+      elsif rexml.elements['Error/Message']
+        puts rexml.elements['Error/Message'].text
       else
-        config_file = "#{File.dirname(__FILE__)}/../../config/errors.yml"
-        errors = YAML.load_file(config_file)
-        error_code = rexml.elements['Error/Code'].text
-        puts errors[error_code]
+        puts rexml
       end
     end
 
