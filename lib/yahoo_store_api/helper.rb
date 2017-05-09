@@ -1,3 +1,5 @@
+require 'rexml/document'
+
 module YahooStoreApi
   module Helper
     ENDPOINT = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/".freeze
@@ -8,19 +10,21 @@ module YahooStoreApi
     end
 
     def response_parser(response)
-      oga = Oga.parse_xml(response.body)
+      xml = REXML::Document.new(response.body)
       xpoint = 'ResultSet/Result'
-      oga.xpath(xpoint).each do |x|
-        x.children.each do |el|
+      xml.elements.each(xpoint) do |result|
+        result.children.each do |el|
+          next if el.to_s.strip.blank?
+          puts "#{el.name.underscore}: #{el.text}"
           begin
             self.define_singleton_method(el.name.underscore) {
               el.children.text.force_encoding('utf-8')
             }
           rescue => e
             puts e
-          end
-        end # x.children.each
-      end # oga.xpath(xpoint).each
+          end # begin
+        end # result.children.each
+      end # xml.elements.each(xpoint)
       self
     end # def response_parser
 
