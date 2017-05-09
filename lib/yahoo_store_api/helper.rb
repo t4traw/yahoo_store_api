@@ -12,9 +12,11 @@ module YahooStoreApi
     def response_parser(response)
       xml = REXML::Document.new(response.body)
       xpoint = 'ResultSet/Result'
+      attributes = {}
       xml.elements.each(xpoint) do |result|
         result.children.each do |el|
           next if el.to_s.strip.blank?
+          attributes[el.name.underscore] = el.text
           begin
             self.define_singleton_method(el.name.underscore) {
               el.text.force_encoding('utf-8')
@@ -23,6 +25,9 @@ module YahooStoreApi
             puts e
           end # begin
         end # result.children.each
+        self.define_singleton_method('all') {
+          attributes
+        }
       end # xml.elements.each(xpoint)
       self
     end # def response_parser

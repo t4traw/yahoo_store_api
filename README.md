@@ -59,6 +59,13 @@ client = RmsItemApi::Client.new(
 
 ```ruby
 item = client.get_item('test123')
+
+# 商品名を取得
+item.name
+# 通常販売価格を取得
+item.price
+# 取得したすべての情報のhash
+item.all
 ```
 
 ### 在庫情報の参照
@@ -67,4 +74,9 @@ item = client.get_item('test123')
 
 ```ruby
 stock = client.get_stock('test123')
+
+# 在庫数の取得
+stock.quantity
+# 取得したすべての情報のhash
+item.all
 ```
