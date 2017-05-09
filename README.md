@@ -1,36 +1,70 @@
 # YahooStoreApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yahoo_store_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+Yahoo!ショッピング プロフェッショナル出店ストア向けAPIを簡単に叩けるrubyラッパーです。
 
-TODO: Delete this and the text above, and describe your gem
+現在開発中です🐛 まだ商品情報の取得と在庫情報の取得しかできません。順次機能追加をしていきたいと思います。
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
 ```ruby
-gem 'yahoo_store_api'
+# 準備中
+# gem 'yahoo_store_api'
 ```
 
-And then execute:
+## 事前準備
 
-    $ bundle
+事前にストア出品アカウントと連携した認証コードが必要になります。
 
-Or install it yourself as:
+まず、Yahooデベロッパーネットワークの[Yahoo!ショッピングのストア運営をサポートするAPIを利用したアプリケーション](https://e.developer.yahoo.co.jp/shopping/register)にアプリケーションを登録します。
 
-    $ gem install yahoo_store_api
+登録が終えたら、次に[認可コードを取得](https://developer.yahoo.co.jp/yconnect/server_app/explicit/authorization.html)する必要があります。ページに表示するかリダイレクトした時のパラメーターにある認証コードを取得します。
+
+※シンプルにページ上に認証コードを表示させる例: https://auth.login.yahoo.co.jp/yconnect/v1/authorization?response_type=code+id_token&client_id=[上で登録したアプリケーションID]&state=foobar&redirect_uri=oob&nonce=hogehoge
+
+stateやnonceなどは[Authorizationエンドポイント](https://developer.yahoo.co.jp/yconnect/server_app/explicit/authorization.html)に詳細がありますので、適宜変更してください。
+
+## Initialize
+
+ストアアカウント、上で登録したアプリケーションid、シークレット、取得した認証コードでインスタンスを生成します。
+
+```ruby
+client = RmsItemApi::Client.new(
+  seller_id: YOUR_STORE_ID, # ストアアカウントid
+  application_id: YOUR_APPLICATION_ID, # アプリケーションid
+  application_secret: YOUR_SECRET, # シークレット
+  authorization_code: AUTHORIZATION_CODE # 認証コード
+)
+```
+
+なお、この認証コードは1回のみ使用可能で、次からはリフレッシュトークンを使用するか、再度認証コードを取得する必要があります。リフレッシュトークンは生成したインスタンスから取得する事ができます。
+
+```ruby
+puts client.refresh_token
+```
+
+```ruby
+client = RmsItemApi::Client.new(
+  seller_id: YOUR_STORE_ID, # ストアアカウントid
+  application_id: YOUR_APPLICATION_ID, # アプリケーションid
+  application_secret: YOUR_SECRET, # シークレット
+  refresh_token: YOUR_REFRESH_TOKEN # リフレッシュトークン
+)
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### 商品情報の参照
 
-## Development
+ストアに登録されている商品情報を取得できます。
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+item = client.get_item('test123')
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### 在庫情報の参照
 
-## Contributing
+ストアに登録されている商品の在庫情報を取得できます。
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/yahoo_store_api.
-
+```ruby
+stock = client.get_stock('test123')
+```

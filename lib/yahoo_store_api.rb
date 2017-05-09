@@ -42,7 +42,6 @@ module YahooStoreApi
       obj = access_token_connection.post{|r| r.body = param}
       result = hash_converter(obj)
       @refresh_token = result[:refresh_token]
-      binding.pry
       result[:access_token]
     end
 
