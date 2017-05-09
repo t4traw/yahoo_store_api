@@ -9,6 +9,18 @@ module YahooStoreApi
       ary.each_slice(2).map{|k, v| [k.to_sym, v]}.to_h
     end
 
+    def handler(response)
+      rexml = REXML::Document.new(response.body)
+      if rexml.elements['ResultSet/Result']
+        response_parser(response)
+      else
+        config_file = "#{File.dirname(__FILE__)}/../../config/errors.yml"
+        errors = YAML.load_file(config_file)
+        error_code = rexml.elements['Error/Code'].text
+        puts errors[error_code]
+      end
+    end
+
     def response_parser(response)
       xml = REXML::Document.new(response.body)
       xpoint = 'ResultSet/Result'
@@ -18,7 +30,6 @@ module YahooStoreApi
           next if el.to_s.strip.blank?
           if el.has_elements?
             el_ary = el.children.reject{|v| v.to_s.blank?}.map{|v| v.text&.force_encoding('utf-8')}.reject{|v| v.to_s.blank?}
-            puts "#{el.name}: #{el_ary}"
             attributes[el.name.underscore] = el_ary
             begin
               self.define_singleton_method(el.name.underscore) {
@@ -35,7 +46,7 @@ module YahooStoreApi
               }
             rescue => e
               puts e
-            end # begin
+            end
           end # if el.has_elements?
         end # result.children.each
         self.define_singleton_method('all') {

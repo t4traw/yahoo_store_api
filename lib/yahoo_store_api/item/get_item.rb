@@ -1,3 +1,5 @@
+require 'rexml/document'
+
 module YahooStoreApi
   module Item
     include YahooStoreApi::Helper
@@ -7,8 +9,8 @@ module YahooStoreApi
         c.adapter Faraday.default_adapter
         c.headers['Authorization'] = "Bearer " + @access_token
       end
-      result = conn.get
-      response_parser(result)
+      handler conn.get
     end
+
   end
 end
