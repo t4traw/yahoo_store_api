@@ -15,10 +15,9 @@ module YahooStoreApi
       xml.elements.each(xpoint) do |result|
         result.children.each do |el|
           next if el.to_s.strip.blank?
-          puts "#{el.name.underscore}: #{el.text}"
           begin
             self.define_singleton_method(el.name.underscore) {
-              el.children.text.force_encoding('utf-8')
+              el.text.force_encoding('utf-8')
             }
           rescue => e
             puts e
