@@ -78,5 +78,5 @@ stock = client.get_stock('test123')
 # 在庫数の取得
 stock.quantity
 # 取得したすべての情報のhash
-item.all
+stock.all
 ```
