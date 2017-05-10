@@ -1,11 +1,18 @@
 module YahooStoreApi
   module Helper
+
     ENDPOINT = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/".freeze
+    def connection(method, params: '')
+      Faraday.new(url: ENDPOINT + method + params) do |c|
+        c.adapter Faraday.default_adapter
+        c.headers['Authorization'] = "Bearer " + @access_token
+      end
+    end
 
     def handler(response)
       rexml = REXML::Document.new(response.body)
       if rexml.elements['ResultSet/Result']
-        response_parser(response)
+        response_parser(rexml)
       elsif rexml.elements['Error/Message']
         puts rexml.elements['Error/Message'].text
       else
