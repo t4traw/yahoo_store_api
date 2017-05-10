@@ -11,6 +11,7 @@ require 'hashie'
 require 'yahoo_store_api/helper.rb'
 require 'yahoo_store_api/item.rb'
 require 'yahoo_store_api/stock.rb'
+require 'yahoo_store_api/publish.rb'
 
 module YahooStoreApi
   class Client
@@ -18,6 +19,7 @@ module YahooStoreApi
     include YahooStoreApi::Helper
     include YahooStoreApi::Item
     include YahooStoreApi::Stock
+    include YahooStoreApi::Publish
 
     def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, refresh_token: nil)
       @seller_id = seller_id
