@@ -13,11 +13,10 @@ module YahooStoreApi
       end
     end
 
-    def response_parser(response)
-      xml = REXML::Document.new(response.body)
+    def response_parser(rexml)
       xpoint = 'ResultSet/Result'
       attributes = {}
-      xml.elements.each(xpoint) do |result|
+      rexml.elements.each(xpoint) do |result|
         result.children.each do |el|
           next if el.to_s.strip.blank?
           if el.has_elements?
