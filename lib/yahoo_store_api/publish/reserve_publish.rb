@@ -1,5 +1,3 @@
-require 'rexml/document'
-
 module YahooStoreApi
   module Publish
     include YahooStoreApi::Helper

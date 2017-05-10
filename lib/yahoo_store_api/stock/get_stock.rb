@@ -1,5 +1,3 @@
-require 'yaml'
-
 module YahooStoreApi
   module Stock
     include YahooStoreApi::Helper

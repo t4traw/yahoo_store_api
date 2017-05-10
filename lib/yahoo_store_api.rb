@@ -1,5 +1,6 @@
 require "yahoo_store_api/version"
 
+require 'rexml/document'
 require 'yaml'
 require 'faraday'
 require 'active_support'
@@ -16,7 +17,6 @@ require 'yahoo_store_api/publish.rb'
 module YahooStoreApi
   class Client
     attr_reader :refresh_token
-    include YahooStoreApi::Helper
     include YahooStoreApi::Item
     include YahooStoreApi::Stock
     include YahooStoreApi::Publish
@@ -53,6 +53,11 @@ module YahooStoreApi
       result = hash_converter(obj)
       @refresh_token = refresh_token
       result[:access_token]
+    end
+
+    def hash_converter(str)
+      ary = str.body.delete('"{}').split(/[:,]/)
+      ary.each_slice(2).map{|k, v| [k.to_sym, v]}.to_h
     end
 
   end
