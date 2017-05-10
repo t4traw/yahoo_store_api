@@ -11,8 +11,11 @@ module YahooStoreApi
 
     def handler(response)
       rexml = REXML::Document.new(response.body)
+      # method = response.to_hash[:url].to_s.split('/').last
       if rexml.elements['ResultSet/Result']
-        response_parser(rexml)
+        response_parser(rexml, xpoint: 'ResultSet/Result')
+      elsif rexml.elements['ResultSet/Status']
+        response_parser(rexml, xpoint: 'ResultSet')
       elsif rexml.elements['Error/Message']
         puts rexml.elements['Error/Message'].text
       else
@@ -20,8 +23,7 @@ module YahooStoreApi
       end
     end
 
-    def response_parser(rexml)
-      xpoint = 'ResultSet/Result'
+    def response_parser(rexml, xpoint:)
       attributes = {}
       rexml.elements.each(xpoint) do |result|
         result.children.each do |el|
