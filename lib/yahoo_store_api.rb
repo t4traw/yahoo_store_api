@@ -7,7 +7,6 @@ require 'active_support'
 require 'active_support/core_ext'
 require 'active_model'
 require 'oga'
-require 'hashie'
 require 'uri'
 
 require 'yahoo_store_api/helper.rb'
