@@ -9,4 +9,14 @@ class YahooStoreApiTest < Minitest::Test
       assert_equal '12', client.get_stock('test1234').quantity
     end
   end
+
+  def test_set_stock
+    request = {
+      item_code: 'test1234',
+      quantity: '6'
+    }
+    VCR.use_cassette('item/setStock') do
+      assert_equal '6', client.set_stock(request).quantity
+    end
+  end
 end

@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 12:47:24 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '594'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Age:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - ATS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 11 May 2017 12:47:35 GMT
+- request:
+    method: post
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/setStock
+    body:
+      encoding: UTF-8
+      string: seller_id=<YOUR_SELLER_ID>&item_code=test1234&quantity=6
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 12:47:24 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '174'
+      Content-Type:
+      - text/xml
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ResultSet totalResultsAvailable="1" totalResultsReturned="1" firstResultPosition="1" ok="1" ng="0"><Result><ItemCode>test1234</ItemCode><SubCode></SubCode><Quantity>6</Quantity></Result></ResultSet>
+    http_version: 
+  recorded_at: Thu, 11 May 2017 12:47:35 GMT
+recorded_with: VCR 3.0.3
