@@ -77,8 +77,8 @@ item.all
 ```ruby
 item = client.edit_item({
   item_code: 'test1234',
-  name: 'てすとしょうひん',
-  path: 'てすとかてごりー',
+  name: 'test_item',
+  path: 'test_category',
   price: 1000,
 })
 
