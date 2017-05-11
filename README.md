@@ -1,5 +1,7 @@
 # YahooStoreApi
 
+[![Build Status](https://travis-ci.org/t4traw/yahoo_store_api.svg?branch=master)](https://travis-ci.org/t4traw/yahoo_store_api)
+
 Yahoo!ショッピング プロフェッショナル出店ストア向けAPIを簡単に叩けるrubyラッパーです。
 
 現在開発中です🐛 まだ商品情報の取得と在庫情報の取得しかできません。順次機能追加をしていきたいと思います。
