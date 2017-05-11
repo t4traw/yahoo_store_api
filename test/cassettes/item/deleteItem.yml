@@ -1,0 +1,341 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 14:19:15 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '592'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Age:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - ATS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 11 May 2017 14:19:27 GMT
+- request:
+    method: get
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getItem?item_code=test1234&seller_id=<YOUR_SELLER_ID>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 14:19:16 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '814'
+      Content-Type:
+      - application/xml
+      Age:
+      - '1'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPFJlc3Vs
+        dFNldCB0b3RhbFJlc3VsdHNSZXR1cm5lZD0iMSI+CiAgPFJlc3VsdD4KICAg
+        IDxJdGVtQ29kZT50ZXN0MTIzNDwvSXRlbUNvZGU+CiAgICA8UGF0aExpc3Q+
+        CiAgICAgIDxQYXRoIG9yaWdGbGFnPSIxIj48IVtDREFUQVt0ZXN0X2NhdGVn
+        b3J5XV0+PC9QYXRoPgogICAgPC9QYXRoTGlzdD4KICAgIDxOYW1lPjwhW0NE
+        QVRBW3Rlc3RfaXRlbV1dPjwvTmFtZT4KICAgIDxQcm9kdWN0Q2F0ZWdvcnk+
+        PC9Qcm9kdWN0Q2F0ZWdvcnk+CiAgICA8T3JpZ2luYWxQcmljZT48L09yaWdp
+        bmFsUHJpY2U+CiAgICA8T3JpZ2luYWxQcmljZUV2aWRlbmNlPjwvT3JpZ2lu
+        YWxQcmljZUV2aWRlbmNlPgogICAgPFByaWNlPjk5OTk5PC9QcmljZT4KICAg
+        IDxTYWxlUHJpY2U+PC9TYWxlUHJpY2U+CiAgICA8UXVhbnRpdHk+NjwvUXVh
+        bnRpdHk+CiAgICA8SGVhZGxpbmU+PCFbQ0RBVEFbXV0+PC9IZWFkbGluZT4K
+        ICAgIDxDYXB0aW9uPjwhW0NEQVRBW11dPjwvQ2FwdGlvbj4KICAgIDxBYnN0
+        cmFjdD48IVtDREFUQVtdXT48L0Fic3RyYWN0PgogICAgPEV4cGxhbmF0aW9u
+        PjwhW0NEQVRBW11dPjwvRXhwbGFuYXRpb24+CiAgICA8QWRkaXRpb25hbDE+
+        PCFbQ0RBVEFbXV0+PC9BZGRpdGlvbmFsMT4KICAgIDxBZGRpdGlvbmFsMj48
+        IVtDREFUQVtdXT48L0FkZGl0aW9uYWwyPgogICAgPEFkZGl0aW9uYWwzPjwh
+        W0NEQVRBW11dPjwvQWRkaXRpb25hbDM+CiAgICA8U3BBZGRpdGlvbmFsPjwh
+        W0NEQVRBW11dPjwvU3BBZGRpdGlvbmFsPgogICAgPFJlbGV2YW50TGlua3M+
+        PC9SZWxldmFudExpbmtzPgogICAgPENhcnRSZWxhdGVkSXRlbXM+PC9DYXJ0
+        UmVsYXRlZEl0ZW1zPgogICAgPFNoaXBXZWlnaHQ+PC9TaGlwV2VpZ2h0Pgog
+        ICAgPFRheGFibGU+MTwvVGF4YWJsZT4KICAgIDxSZWxlYXNlRGF0ZT48L1Jl
+        bGVhc2VEYXRlPgogICAgPFBvaW50Q29kZT48L1BvaW50Q29kZT4KICAgIDxN
+        ZXRhS2V5PjwhW0NEQVRBW11dPjwvTWV0YUtleT4KICAgIDxNZXRhRGVzYz48
+        IVtDREFUQVtdXT48L01ldGFEZXNjPgogICAgPEhpZGRlblBhZ2U+CiAgICAg
+        IDxIaWRkZW5GbGFnPjA8L0hpZGRlbkZsYWc+CiAgICAgIDxJZD48L0lkPgog
+        ICAgICA8UGFzc3dvcmQ+PC9QYXNzd29yZD4KICAgIDwvSGlkZGVuUGFnZT4K
+        ICAgIDxEaXNwbGF5PjA8L0Rpc3BsYXk+CiAgICA8VGVtcGxhdGVJZD5JVDAz
+        PC9UZW1wbGF0ZUlkPgogICAgPFRlbXBsYXRlTmFtZT7llYblk4Hjg5rjg7zj
+        grgzPC9UZW1wbGF0ZU5hbWU+CiAgICA8U2FsZVBlcmlvZFN0YXJ0PjwvU2Fs
+        ZVBlcmlvZFN0YXJ0PgogICAgPFNhbGVQZXJpb2RFbmQ+PC9TYWxlUGVyaW9k
+        RW5kPgogICAgPFNhbGVMaW1pdD48L1NhbGVMaW1pdD4KICAgIDxQclJhdGU+
+        PC9QclJhdGU+CiAgICA8U3BDb2RlPjwvU3BDb2RlPgogICAgPEJyYW5kQ29k
+        ZT48L0JyYW5kQ29kZT4KICAgIDxZYWhvb1Byb2R1Y3RDb2RlPjwvWWFob29Q
+        cm9kdWN0Q29kZT4KICAgIDxQcm9kdWN0Q29kZT48L1Byb2R1Y3RDb2RlPgog
+        ICAgPEphbj48L0phbj4KICAgIDxEZWxpdmVyeT4wPC9EZWxpdmVyeT4KICAg
+        IDxMZWFkVGltZUluU3RvY2s+PC9MZWFkVGltZUluU3RvY2s+CiAgICA8TGVh
+        ZFRpbWVPdXRTdG9jaz48L0xlYWRUaW1lT3V0U3RvY2s+CiAgICA8SW1hZ2U+
+        PC9JbWFnZT4KICAgIDxMaWJJbWFnZTE+PC9MaWJJbWFnZTE+CiAgICA8TGli
+        SW1hZ2UyPjwvTGliSW1hZ2UyPgogICAgPExpYkltYWdlMz48L0xpYkltYWdl
+        Mz4KICAgIDxMaWJJbWFnZTQ+PC9MaWJJbWFnZTQ+CiAgICA8TGliSW1hZ2U1
+        PjwvTGliSW1hZ2U1PgogICAgPEFzdGtDb2RlPjA8L0FzdGtDb2RlPgogICAg
+        PENvbmRpdGlvbj4wPC9Db25kaXRpb24+CiAgICA8U3BlYzE+PC9TcGVjMT4K
+        ICAgIDxTcGVjMj48L1NwZWMyPgogICAgPFNwZWMzPjwvU3BlYzM+CiAgICA8
+        U3BlYzQ+PC9TcGVjND4KICAgIDxTcGVjNT48L1NwZWM1PgogICAgPFNwZWM2
+        PjwvU3BlYzY+CiAgICA8U3BlYzc+PC9TcGVjNz4KICAgIDxTcGVjOD48L1Nw
+        ZWM4PgogICAgPFNwZWM5PjwvU3BlYzk+CiAgICA8U3BlYzEwPjwvU3BlYzEw
+        PgogICAgPFNob3dTdG9jaz4yPC9TaG93U3RvY2s+CiAgICA8VXBkYXRlVGlt
+        ZT4yMDE3LTA1LTExVDIzOjE5OjA5KzA5OjAwPC9VcGRhdGVUaW1lPgogICAg
+        PEVkaXRpbmdGbGFnPjE8L0VkaXRpbmdGbGFnPgogIDwvUmVzdWx0Pgo8L1Jl
+        c3VsdFNldD4K
+    http_version: 
+  recorded_at: Thu, 11 May 2017 14:19:27 GMT
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 14:19:16 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '593'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Age:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - ATS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 11 May 2017 14:19:27 GMT
+- request:
+    method: post
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/deleteItem
+    body:
+      encoding: UTF-8
+      string: seller_id=<YOUR_SELLER_ID>&item_code=test1234
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 14:19:16 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '99'
+      Content-Type:
+      - application/xml
+      Age:
+      - '2'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ResultSet>
+          <Result>
+            <Status>OK</Status>
+          </Result>
+        </ResultSet>
+    http_version: 
+  recorded_at: Thu, 11 May 2017 14:19:29 GMT
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 14:19:18 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '594'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Age:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - ATS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 11 May 2017 14:19:29 GMT
+- request:
+    method: get
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getItem?item_code=test1234&seller_id=<YOUR_SELLER_ID>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Thu, 11 May 2017 14:19:18 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Content-Length:
+      - '189'
+      Content-Type:
+      - application/xml
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiID8+CjxFcnJv
+        cj4KICA8TWVzc2FnZT48IVtDREFUQVvmjIflrprjgZXjgozjgZ/llYblk4Hj
+        grPjg7zjg4njga/lrZjlnKjjgZfjgb7jgZvjgpPjgIJdXT48L01lc3NhZ2U+
+        CiAgPERldGFpbD48L0RldGFpbD4KICA8Q29kZT5pdC0wNTAwMjwvQ29kZT4K
+        PC9FcnJvcj4K
+    http_version: 
+  recorded_at: Thu, 11 May 2017 14:19:29 GMT
+recorded_with: VCR 3.0.3

@@ -23,4 +23,12 @@ class YahooStoreApiTest < Minitest::Test
       assert_equal 'changed_name', client.get_item(request[:item_code]).name
     end
   end
+
+  def test_delete_item
+    VCR.use_cassette('item/deleteItem') do
+      assert_equal 'test_item', client.get_item('test1234').name
+      assert_equal 'OK', client.delete_item('test1234').status
+      assert_nil client.get_item('test1234')
+    end
+  end
 end
