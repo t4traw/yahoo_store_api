@@ -64,7 +64,23 @@ item = client.get_item('test123')
 item.name
 # 通常販売価格を取得
 item.price
-# 取得したすべての情報のhash
+# 取得したすべての情報をhashで出力
+item.all
+```
+
+### 商品情報の登録
+
+商品情報を登録・更新できます。
+
+```ruby
+item = client.edit_item({
+  item_code: 'test1234',
+  name: 'てすとしょうひん',
+  path: 'てすとかてごりー',
+  price: 1000,
+})
+
+# 送信結果をhashで出力
 item.all
 ```
 
@@ -77,6 +93,6 @@ stock = client.get_stock('test123')
 
 # 在庫数の取得
 stock.quantity
-# 取得したすべての情報のhash
+# 取得したすべての情報をhashで出力
 stock.all
 ```
