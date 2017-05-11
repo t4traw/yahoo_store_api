@@ -29,7 +29,7 @@ module YahooStoreApi
         result.children.each do |el|
           next if el.to_s.strip.blank?
           if el.has_elements?
-            el_ary = el.children.reject{|v| v.to_s.blank?}.map{|v| v.text&.force_encoding('utf-8')}.reject{|v| v.to_s.blank?}
+            el_ary = el.children.reject{|v| v.to_s.blank?}.map{|v| v.text.try!(:force_encoding, 'utf-8')}.reject{|v| v.to_s.blank?}
             attributes[el.name.underscore] = el_ary
             begin
               self.define_singleton_method(el.name.underscore) {
@@ -42,7 +42,7 @@ module YahooStoreApi
             attributes[el.name.underscore] = el.text
             begin
               self.define_singleton_method(el.name.underscore) {
-                el.text.force_encoding('utf-8')
+                el.text.try!(:force_encoding, 'utf-8')
               }
             rescue => e
               puts e
