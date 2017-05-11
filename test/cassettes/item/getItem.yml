@@ -1,0 +1,146 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 07:33:50 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '593'
+      Content-Type:
+      - application/json;charset=UTF-8
+      Age:
+      - '0'
+      Connection:
+      - close
+      Server:
+      - ATS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+    http_version: 
+  recorded_at: Thu, 11 May 2017 07:33:50 GMT
+- request:
+    method: get
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getItem?item_code=test1234&seller_id=<YOUR_SELLER_ID>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 11 May 2017 07:33:51 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '815'
+      Content-Type:
+      - application/xml
+      Age:
+      - '1'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPFJlc3Vs
+        dFNldCB0b3RhbFJlc3VsdHNSZXR1cm5lZD0iMSI+CiAgPFJlc3VsdD4KICAg
+        IDxJdGVtQ29kZT50ZXN0MTIzNDwvSXRlbUNvZGU+CiAgICA8UGF0aExpc3Q+
+        CiAgICAgIDxQYXRoIG9yaWdGbGFnPSIxIj48IVtDREFUQVt0ZXN0X2NhdGVn
+        b3J5XV0+PC9QYXRoPgogICAgPC9QYXRoTGlzdD4KICAgIDxOYW1lPjwhW0NE
+        QVRBW3Rlc3RfaXRlbV1dPjwvTmFtZT4KICAgIDxQcm9kdWN0Q2F0ZWdvcnk+
+        PC9Qcm9kdWN0Q2F0ZWdvcnk+CiAgICA8T3JpZ2luYWxQcmljZT48L09yaWdp
+        bmFsUHJpY2U+CiAgICA8T3JpZ2luYWxQcmljZUV2aWRlbmNlPjwvT3JpZ2lu
+        YWxQcmljZUV2aWRlbmNlPgogICAgPFByaWNlPjU2Nzg8L1ByaWNlPgogICAg
+        PFNhbGVQcmljZT48L1NhbGVQcmljZT4KICAgIDxRdWFudGl0eT48L1F1YW50
+        aXR5PgogICAgPEhlYWRsaW5lPjwhW0NEQVRBW11dPjwvSGVhZGxpbmU+CiAg
+        ICA8Q2FwdGlvbj48IVtDREFUQVtdXT48L0NhcHRpb24+CiAgICA8QWJzdHJh
+        Y3Q+PCFbQ0RBVEFbXV0+PC9BYnN0cmFjdD4KICAgIDxFeHBsYW5hdGlvbj48
+        IVtDREFUQVtdXT48L0V4cGxhbmF0aW9uPgogICAgPEFkZGl0aW9uYWwxPjwh
+        W0NEQVRBW11dPjwvQWRkaXRpb25hbDE+CiAgICA8QWRkaXRpb25hbDI+PCFb
+        Q0RBVEFbXV0+PC9BZGRpdGlvbmFsMj4KICAgIDxBZGRpdGlvbmFsMz48IVtD
+        REFUQVtdXT48L0FkZGl0aW9uYWwzPgogICAgPFNwQWRkaXRpb25hbD48IVtD
+        REFUQVtdXT48L1NwQWRkaXRpb25hbD4KICAgIDxSZWxldmFudExpbmtzPjwv
+        UmVsZXZhbnRMaW5rcz4KICAgIDxDYXJ0UmVsYXRlZEl0ZW1zPjwvQ2FydFJl
+        bGF0ZWRJdGVtcz4KICAgIDxTaGlwV2VpZ2h0PjwvU2hpcFdlaWdodD4KICAg
+        IDxUYXhhYmxlPjE8L1RheGFibGU+CiAgICA8UmVsZWFzZURhdGU+PC9SZWxl
+        YXNlRGF0ZT4KICAgIDxQb2ludENvZGU+PC9Qb2ludENvZGU+CiAgICA8TWV0
+        YUtleT48IVtDREFUQVtdXT48L01ldGFLZXk+CiAgICA8TWV0YURlc2M+PCFb
+        Q0RBVEFbXV0+PC9NZXRhRGVzYz4KICAgIDxIaWRkZW5QYWdlPgogICAgICA8
+        SGlkZGVuRmxhZz4wPC9IaWRkZW5GbGFnPgogICAgICA8SWQ+PC9JZD4KICAg
+        ICAgPFBhc3N3b3JkPjwvUGFzc3dvcmQ+CiAgICA8L0hpZGRlblBhZ2U+CiAg
+        ICA8RGlzcGxheT4xPC9EaXNwbGF5PgogICAgPFRlbXBsYXRlSWQ+SVQwMzwv
+        VGVtcGxhdGVJZD4KICAgIDxUZW1wbGF0ZU5hbWU+5ZWG5ZOB44Oa44O844K4
+        MzwvVGVtcGxhdGVOYW1lPgogICAgPFNhbGVQZXJpb2RTdGFydD48L1NhbGVQ
+        ZXJpb2RTdGFydD4KICAgIDxTYWxlUGVyaW9kRW5kPjwvU2FsZVBlcmlvZEVu
+        ZD4KICAgIDxTYWxlTGltaXQ+PC9TYWxlTGltaXQ+CiAgICA8UHJSYXRlPjwv
+        UHJSYXRlPgogICAgPFNwQ29kZT48L1NwQ29kZT4KICAgIDxCcmFuZENvZGU+
+        PC9CcmFuZENvZGU+CiAgICA8WWFob29Qcm9kdWN0Q29kZT48L1lhaG9vUHJv
+        ZHVjdENvZGU+CiAgICA8UHJvZHVjdENvZGU+PC9Qcm9kdWN0Q29kZT4KICAg
+        IDxKYW4+PC9KYW4+CiAgICA8RGVsaXZlcnk+MDwvRGVsaXZlcnk+CiAgICA8
+        TGVhZFRpbWVJblN0b2NrPjwvTGVhZFRpbWVJblN0b2NrPgogICAgPExlYWRU
+        aW1lT3V0U3RvY2s+PC9MZWFkVGltZU91dFN0b2NrPgogICAgPEltYWdlPjwv
+        SW1hZ2U+CiAgICA8TGliSW1hZ2UxPjwvTGliSW1hZ2UxPgogICAgPExpYklt
+        YWdlMj48L0xpYkltYWdlMj4KICAgIDxMaWJJbWFnZTM+PC9MaWJJbWFnZTM+
+        CiAgICA8TGliSW1hZ2U0PjwvTGliSW1hZ2U0PgogICAgPExpYkltYWdlNT48
+        L0xpYkltYWdlNT4KICAgIDxBc3RrQ29kZT4wPC9Bc3RrQ29kZT4KICAgIDxD
+        b25kaXRpb24+MDwvQ29uZGl0aW9uPgogICAgPFNwZWMxPjwvU3BlYzE+CiAg
+        ICA8U3BlYzI+PC9TcGVjMj4KICAgIDxTcGVjMz48L1NwZWMzPgogICAgPFNw
+        ZWM0PjwvU3BlYzQ+CiAgICA8U3BlYzU+PC9TcGVjNT4KICAgIDxTcGVjNj48
+        L1NwZWM2PgogICAgPFNwZWM3PjwvU3BlYzc+CiAgICA8U3BlYzg+PC9TcGVj
+        OD4KICAgIDxTcGVjOT48L1NwZWM5PgogICAgPFNwZWMxMD48L1NwZWMxMD4K
+        ICAgIDxTaG93U3RvY2s+MjwvU2hvd1N0b2NrPgogICAgPFVwZGF0ZVRpbWU+
+        MjAxNy0wNS0xMVQxNjozMzoxNCswOTowMDwvVXBkYXRlVGltZT4KICAgIDxF
+        ZGl0aW5nRmxhZz4xPC9FZGl0aW5nRmxhZz4KICA8L1Jlc3VsdD4KPC9SZXN1
+        bHRTZXQ+Cg==
+    http_version: 
+  recorded_at: Thu, 11 May 2017 07:33:51 GMT
+recorded_with: VCR 3.0.3
