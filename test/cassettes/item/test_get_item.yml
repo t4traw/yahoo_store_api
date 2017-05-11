@@ -46,7 +46,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"access_token":"<ACCESS_TOKEN>"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 07:33:50 GMT
 - request:
     method: get
@@ -141,6 +141,6 @@ http_interactions:
         MjAxNy0wNS0xMVQxNjozMzoxNCswOTowMDwvVXBkYXRlVGltZT4KICAgIDxF
         ZGl0aW5nRmxhZz4xPC9FZGl0aW5nRmxhZz4KICA8L1Jlc3VsdD4KPC9SZXN1
         bHRTZXQ+Cg==
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 07:33:51 GMT
 recorded_with: VCR 3.0.3

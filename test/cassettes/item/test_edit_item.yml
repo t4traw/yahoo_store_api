@@ -46,7 +46,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"access_token":"<ACCESS_TOKEN>"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 13:50:37 GMT
 - request:
     method: get
@@ -141,7 +141,7 @@ http_interactions:
         ZT4yMDE3LTA1LTExVDIyOjUwOjEwKzA5OjAwPC9VcGRhdGVUaW1lPgogICAg
         PEVkaXRpbmdGbGFnPjE8L0VkaXRpbmdGbGFnPgogIDwvUmVzdWx0Pgo8L1Jl
         c3VsdFNldD4K
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 13:50:37 GMT
 - request:
     method: post
@@ -189,7 +189,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"access_token":"<ACCESS_TOKEN>"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 13:50:37 GMT
 - request:
     method: post
@@ -241,7 +241,7 @@ http_interactions:
             <Warning/>
           </Result>
         </ResultSet>
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 13:50:39 GMT
 - request:
     method: post
@@ -289,7 +289,7 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: '{"access_token":"<ACCESS_TOKEN>"}'
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 13:50:39 GMT
 - request:
     method: get
@@ -384,6 +384,6 @@ http_interactions:
         VGltZT4yMDE3LTA1LTExVDIyOjUwOjI4KzA5OjAwPC9VcGRhdGVUaW1lPgog
         ICAgPEVkaXRpbmdGbGFnPjE8L0VkaXRpbmdGbGFnPgogIDwvUmVzdWx0Pgo8
         L1Jlc3VsdFNldD4K
-    http_version: 
+    http_version:
   recorded_at: Thu, 11 May 2017 13:50:40 GMT
 recorded_with: VCR 3.0.3

@@ -5,7 +5,7 @@ class YahooStoreApiTest < Minitest::Test
   include TestHelper::Client
 
   def test_get_item
-    VCR.use_cassette('item/getItem') do
+    VCR.use_cassette('item/test_get_item') do
       assert_equal 'test_item', client.get_item('test1234').name
     end
   end
@@ -17,7 +17,7 @@ class YahooStoreApiTest < Minitest::Test
       price: 99999,
       path: 'test_category',
     }
-    VCR.use_cassette('item/editItem') do
+    VCR.use_cassette('item/test_edit_item') do
       assert_equal 'test_item', client.get_item(request[:item_code]).name
       assert_equal 'OK', client.edit_item(request).status
       assert_equal 'changed_name', client.get_item(request[:item_code]).name
@@ -25,7 +25,7 @@ class YahooStoreApiTest < Minitest::Test
   end
 
   def test_delete_item
-    VCR.use_cassette('item/deleteItem') do
+    VCR.use_cassette('item/test_delete_item') do
       assert_equal 'test_item', client.get_item('test1234').name
       assert_equal 'OK', client.delete_item('test1234').status
       assert_equal "指定された商品コードは存在しません。", client.get_item('test1234').message
