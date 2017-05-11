@@ -2,7 +2,7 @@ require 'yahoo_store_api'
 require 'test_helper'
 
 class YahooStoreApiTest < Minitest::Test
-  include YahooStoreApi::Test
+  include TestHelper::Client
 
   def test_when_get_item_success
     VCR.use_cassette('item/getItem') do

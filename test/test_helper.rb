@@ -22,8 +22,8 @@ VCR.configure do |c|
   end
 end
 
-module YahooStoreApi
-  module Test
+module TestHelper
+  module Client
     def client
       YahooStoreApi::Client.new(
         seller_id: ENV['YOUR_SELLER_ID'],
