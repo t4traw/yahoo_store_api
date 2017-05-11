@@ -4,8 +4,9 @@ module YahooStoreApi
 
     def edit_item(hash)
       request = "seller_id=#{@seller_id}&#{URI.encode_www_form(hash)}"
-      handler connection('editItem').post {
-        |r| r.body = request
+      
+      handler connection('editItem').post { |r|
+        r.body = request
       }
     end
 

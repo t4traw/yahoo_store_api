@@ -3,7 +3,10 @@ module YahooStoreApi
     include YahooStoreApi::Helper
 
     def get_item(item_code)
-      handler connection('getItem', params: "?seller_id=#{@seller_id}&item_code=#{item_code}").get
+      handler connection('getItem').get { |r|
+        r.params['seller_id'] = @seller_id
+        r.params['item_code'] = item_code
+      }
     end
 
   end
