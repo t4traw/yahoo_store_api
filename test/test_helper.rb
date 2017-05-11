@@ -18,15 +18,15 @@ VCR.configure do |c|
   c.filter_sensitive_data('<YOUR_REFRESH_TOKEN>') { ENV['YOUR_REFRESH_TOKEN'] }
   c.filter_sensitive_data('<BASIC_AUTH>') { ENV['BASIC_AUTH'] }
   c.before_record do |i|
-   i.request.headers.delete('Authorization')
-   i.response.body.sub!(/\"access_token\":\".*\"}$/, '"access_token":"<ACCESS_TOKEN>"}')
+    i.request.headers.delete('Authorization')
+    i.response.body.sub!(/\"access_token\":\".*\"}$/, '"access_token":"<ACCESS_TOKEN>"}')
   end
 end
 
 module YahooStoreApi
   module Test
     def client
-       YahooStoreApi::Client.new(
+      YahooStoreApi::Client.new(
         seller_id: ENV['YOUR_SELLER_ID'],
         application_id: ENV['YOUR_APPLICATION_ID'],
         application_secret: ENV['YOUR_APPLICATION_SECRET'],
