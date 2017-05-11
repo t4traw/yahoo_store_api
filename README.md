@@ -119,5 +119,5 @@ stock.all
 pub = client.reserve_publish
 
 # 結果を取得
-stock.status
+pub.status
 ```
