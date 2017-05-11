@@ -28,7 +28,14 @@ class YahooStoreApiTest < Minitest::Test
     VCR.use_cassette('item/deleteItem') do
       assert_equal 'test_item', client.get_item('test1234').name
       assert_equal 'OK', client.delete_item('test1234').status
-      assert_nil client.get_item('test1234')
+      assert_equal "指定された商品コードは存在しません。", client.get_item('test1234').message
+    end
+  end
+
+  def test_if_dosent_exist_item_code
+    VCR.use_cassette('item/test_if_dosent_exist_item_code') do
+      assert_equal 'NG', client.get_item('evil_code').status
+      assert_equal "指定された商品コードは存在しません。", client.get_item('evil_code').message
     end
   end
 end
