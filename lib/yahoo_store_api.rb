@@ -1,18 +1,16 @@
 require "yahoo_store_api/version"
-
-require 'rexml/document'
-require 'yaml'
-require 'faraday'
-require 'active_support'
-require 'active_support/core_ext'
-require 'active_model'
-require 'oga'
-require 'uri'
-
 require 'yahoo_store_api/helper.rb'
 require 'yahoo_store_api/item.rb'
 require 'yahoo_store_api/stock.rb'
 require 'yahoo_store_api/publish.rb'
+
+require 'rexml/document'
+require 'yaml'
+require 'uri'
+require 'faraday'
+require 'active_support'
+require 'active_support/core_ext'
+require 'active_model'
 
 module YahooStoreApi
   class Client
