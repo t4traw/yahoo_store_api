@@ -5,13 +5,23 @@
 
 Yahoo!ショッピング プロフェッショナル出店ストア向けAPIを簡単に叩けるrubyラッパーです。
 
-現在開発中です🐛 まだ商品情報の取得と在庫情報の取得しかできません。順次機能追加をしていきたいと思います。
+現在開発中です🐛 まだ商品情報のCRUDと在庫情報の取得・更新、反映予約しかできません。順次機能追加をしていきたいと思います。
+
+## できること
+
+* 商品に関連するAPI
+  * 商品参照API(`get_item`)
+  * 商品登録API(`set_item`)
+  * 商品削除API(`delete_item`)
+* 在庫に関連するAPI
+  * 在庫参照API(`get_stock`)
+  * 在庫更新API(`set_stock`)
+* 全反映予約API(`reserve_publish`)
 
 ## Installation
 
 ```ruby
-# 準備中
-# gem 'yahoo_store_api'
+gem 'yahoo_store_api'
 ```
 
 ## 事前準備
@@ -71,7 +81,7 @@ item.price
 item.all
 ```
 
-### 商品情報の登録
+### 商品情報の登録/更新
 
 商品情報を登録・更新できます。
 
@@ -98,4 +108,15 @@ stock = client.get_stock('test123')
 stock.quantity
 # 取得したすべての情報をhashで出力
 stock.all
+```
+
+### 全反映予約
+
+反映予約をします。
+
+```ruby
+pub = client.reserve_publish
+
+# 結果を取得
+stock.status
 ```
