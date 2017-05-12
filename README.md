@@ -21,6 +21,8 @@ Yahoo!ショッピング プロフェッショナル出店ストア向けAPIを�
 
 ## Installation
 
+Add this line to your application's Gemfile:
+
 ```ruby
 gem 'yahoo_store_api'
 ```
