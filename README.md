@@ -44,7 +44,7 @@ stateやnonceなどは[Authorizationエンドポイント](https://developer.yah
 ストアアカウント、上で登録したアプリケーションid、シークレット、取得した認証コードでインスタンスを生成します。
 
 ```ruby
-client = RmsItemApi::Client.new(
+client = YahooStoreApi::Client.new(
   seller_id: YOUR_STORE_ID, # ストアアカウントid
   application_id: YOUR_APPLICATION_ID, # アプリケーションid
   application_secret: YOUR_SECRET, # シークレット
@@ -59,7 +59,7 @@ puts client.refresh_token
 ```
 
 ```ruby
-client = RmsItemApi::Client.new(
+client = YahooStoreApi::Client.new(
   seller_id: YOUR_STORE_ID, # ストアアカウントid
   application_id: YOUR_APPLICATION_ID, # アプリケーションid
   application_secret: YOUR_SECRET, # シークレット
