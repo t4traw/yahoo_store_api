@@ -7,6 +7,7 @@ require 'yahoo_store_api/publish.rb'
 require 'rexml/document'
 require 'yaml'
 require 'uri'
+require 'cgi'
 require 'faraday'
 require 'active_support'
 require 'active_support/core_ext'
@@ -19,10 +20,11 @@ module YahooStoreApi
     include YahooStoreApi::Stock
     include YahooStoreApi::Publish
 
-    def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, refresh_token: nil)
+    def initialize(seller_id:, application_id:, application_secret:, authorization_code: nil, redirect_uri: nil, refresh_token: nil)
       @seller_id = seller_id
       @application_id = application_id
       @application_secret = application_secret
+      @redirect_uri = redirect_uri ? "&redirect_uri=" + CGI.escape(redirect_uri) : nil
       @access_token = reflesh_access_token(refresh_token) || get_access_token(authorization_code)
     end
 
@@ -38,7 +40,7 @@ module YahooStoreApi
     end
 
     def get_access_token(authorization_code)
-      param = "grant_type=authorization_code&code=#{authorization_code}&redirect_uri=oob"
+      param = "grant_type=authorization_code&code=#{authorization_code}#{@redirect_uri}"
       obj = access_token_connection.post{|r| r.body = param}
       result = hash_converter(obj)
       @refresh_token = result[:refresh_token]

@@ -43,11 +43,14 @@ stateやnonceなどは[Authorizationエンドポイント](https://developer.yah
 
 ストアアカウント、上で登録したアプリケーションid、シークレット、取得した認証コードでインスタンスを生成します。
 
+redirect_uriにはアプリケーション登録時に設定したフルURL（もしくはカスタムURIスキーム）を指定してください。登録済みの戻り先URLが1つしかない場合は省略可能です。戻り先URLがない場合はoobを指定してください。
+
 ```ruby
 client = YahooStoreApi::Client.new(
   seller_id: YOUR_STORE_ID, # ストアアカウントid
   application_id: YOUR_APPLICATION_ID, # アプリケーションid
   application_secret: YOUR_SECRET, # シークレット
+  redirect_uri: 'oob', # 省略可能
   authorization_code: AUTHORIZATION_CODE # 認証コード
 )
 ```
