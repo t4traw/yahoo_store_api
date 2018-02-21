@@ -87,9 +87,7 @@ item.price
 item.all
 ```
 
-### 商品情報の登録/更新
-
-商品情報を登録・更新できます。
+### 商品情報の登録
 
 ```ruby
 item = client.edit_item({
@@ -101,6 +99,21 @@ item = client.edit_item({
 
 # 送信結果をhashで出力
 item.all
+```
+
+### 商品情報の更新
+
+:bangbang: APIの仕様で、更新したいカラムのみ送信して更新が **できません** :bangbang:
+
+商品を登録・更新する場合、**省略した項目はデフォルト値で上書きされるので注意してください**。
+
+なので、一度情報を取得し、必要な箇所を書き換えて送信する必要があります。
+
+```ruby
+data = client.get_item(code).all
+data["name"] = 'edit item'
+data["caption"] = 'edit caption'
+client.edit_item(data)
 ```
 
 ### 在庫情報の参照
