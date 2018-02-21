@@ -89,6 +89,8 @@ item.all
 
 ### 商品情報の登録
 
+項目については[Yahoo:商品登録API](https://developer.yahoo.co.jp/webapi/shopping/editItem.html)を参照してください。
+
 ```ruby
 item = client.edit_item({
   item_code: 'test1234',
