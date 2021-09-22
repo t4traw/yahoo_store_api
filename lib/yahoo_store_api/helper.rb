@@ -2,9 +2,16 @@ module YahooStoreApi
   module Helper
     ENDPOINT = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/".freeze
 
-    def connection(method)
-      Faraday.new(url: ENDPOINT + method) do |c|
-        c.adapter Faraday.default_adapter
+    def connection(method, with_seller_id: false)
+      url = ENDPOINT + method
+      if with_seller_id
+        url += "?seller_id=#{@seller_id}" if with_seller_id
+      end
+
+      Faraday.new(url: url) do |c|
+        c.request :multipart
+        c.request :url_encoded
+        c.adapter :net_http
         c.headers["Authorization"] = "Bearer " + @access_token
       end
     end
