@@ -1,21 +1,21 @@
 module YahooStoreApi
   module Helper
-
     ENDPOINT = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/".freeze
+
     def connection(method)
       Faraday.new(url: ENDPOINT + method) do |c|
         c.adapter Faraday.default_adapter
-        c.headers['Authorization'] = "Bearer " + @access_token
+        c.headers["Authorization"] = "Bearer " + @access_token
       end
     end
 
     def handler(response)
       rexml = REXML::Document.new(response.body)
-      if rexml.elements['ResultSet/Result']
-        response_parser(rexml, xpoint: 'ResultSet/Result')
-      elsif rexml.elements['ResultSet/Status']
-        response_parser(rexml, xpoint: 'ResultSet')
-      elsif rexml.elements['Error/Message']
+      if rexml.elements["ResultSet/Result"]
+        response_parser(rexml, xpoint: "ResultSet/Result")
+      elsif rexml.elements["ResultSet/Status"]
+        response_parser(rexml, xpoint: "ResultSet")
+      elsif rexml.elements["Error/Message"]
         error_parser(rexml)
       else
         puts rexml
@@ -28,7 +28,7 @@ module YahooStoreApi
         result.children.each do |el|
           next if el.to_s.strip.blank?
           if el.has_elements?
-            el_ary = el.children.reject{|v| v.to_s.blank?}.map{|v| v.text.try!(:force_encoding, 'utf-8')}.reject{|v| v.to_s.blank?}
+            el_ary = el.children.reject { |v| v.to_s.blank? }.map { |v| v.text.try!(:force_encoding, "utf-8") }.reject { |v| v.to_s.blank? }
             attributes[el.name.underscore] = el_ary
             begin
               self.define_singleton_method(el.name.underscore) {
@@ -41,14 +41,14 @@ module YahooStoreApi
             attributes[el.name.underscore] = el.text
             begin
               self.define_singleton_method(el.name.underscore) {
-                el.text.try!(:force_encoding, 'utf-8')
+                el.text.try!(:force_encoding, "utf-8")
               }
             rescue => e
               puts e
             end
           end # if el.has_elements?
         end # result.children.each
-        self.define_singleton_method('all') {
+        self.define_singleton_method("all") {
           attributes
         }
       end # xml.elements.each(xpoint)
@@ -57,15 +57,14 @@ module YahooStoreApi
 
     def error_parser(rexml)
       result = {
-        status: 'NG',
-        message: rexml.elements['Error/Message'].text
+        status: "NG",
+        message: rexml.elements["Error/Message"].text,
       }
       result.each do |k, v|
         self.define_singleton_method(k) { v }
       end
-      self.define_singleton_method('all') { result }
+      self.define_singleton_method("all") { result }
       self
     end
-
   end
 end

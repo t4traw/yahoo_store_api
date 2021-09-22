@@ -8,10 +8,9 @@ module YahooStoreApi
       request << "mode=#{mode}"
       request << "seller_id=#{reserve_time}" if reserve_time
 
-      handler connection('reservePublish').post { |r|
-        r.body = request.join('&')
+      handler connection("reservePublish").post { |r|
+        r.body = request.join("&")
       }
     end
-
   end
 end

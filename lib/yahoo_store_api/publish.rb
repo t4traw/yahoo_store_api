@@ -1,1 +1,1 @@
-require 'yahoo_store_api/publish/reserve_publish'
+require "yahoo_store_api/publish/reserve_publish"

@@ -1,17 +1,17 @@
 require "yahoo_store_api/version"
-require 'yahoo_store_api/helper.rb'
-require 'yahoo_store_api/item.rb'
-require 'yahoo_store_api/stock.rb'
-require 'yahoo_store_api/publish.rb'
+require "yahoo_store_api/helper.rb"
+require "yahoo_store_api/item.rb"
+require "yahoo_store_api/stock.rb"
+require "yahoo_store_api/publish.rb"
 
-require 'rexml/document'
-require 'yaml'
-require 'uri'
-require 'cgi'
-require 'faraday'
-require 'active_support'
-require 'active_support/core_ext'
-require 'active_model'
+require "rexml/document"
+require "yaml"
+require "uri"
+require "cgi"
+require "faraday"
+require "active_support"
+require "active_support/core_ext"
+require "active_model"
 
 module YahooStoreApi
   class Client
@@ -30,18 +30,19 @@ module YahooStoreApi
 
     private
 
-    ACCESS_TOKEN_ENDPOINT = 'https://auth.login.yahoo.co.jp/yconnect/v1/token'.freeze
+    ACCESS_TOKEN_ENDPOINT = "https://auth.login.yahoo.co.jp/yconnect/v1/token".freeze
+
     def access_token_connection
       Faraday.new(url: ACCESS_TOKEN_ENDPOINT) do |c|
         c.adapter Faraday.default_adapter
         c.authorization :Basic, Base64.strict_encode64("#{@application_id}:#{@application_secret}")
-        c.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+        c.headers["Content-Type"] = "application/x-www-form-urlencoded;charset=UTF-8"
       end
     end
 
     def get_access_token(authorization_code)
       param = "grant_type=authorization_code&code=#{authorization_code}#{@redirect_uri}"
-      obj = access_token_connection.post{|r| r.body = param}
+      obj = access_token_connection.post { |r| r.body = param }
       result = hash_converter(obj)
       @refresh_token = result[:refresh_token]
       result[:access_token]
@@ -49,7 +50,7 @@ module YahooStoreApi
 
     def reflesh_access_token(refresh_token)
       param = "grant_type=refresh_token&refresh_token=#{refresh_token}"
-      obj = access_token_connection.post{|r| r.body = param}
+      obj = access_token_connection.post { |r| r.body = param }
       result = hash_converter(obj)
       @refresh_token = refresh_token
       result[:access_token]
@@ -57,8 +58,7 @@ module YahooStoreApi
 
     def hash_converter(str)
       ary = str.body.delete('"{}').split(/[:,]/)
-      ary.each_slice(2).map{|k, v| [k.to_sym, v]}.to_h
+      ary.each_slice(2).map { |k, v| [k.to_sym, v] }.to_h
     end
-
   end
 end
