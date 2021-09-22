@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '1775'
+      Date:
+      - Wed, 22 Sep 2021 14:45:25 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Age:
+      - '0'
+      Server:
+      - ATS
+      Set-Cookie:
+      - A=5ht9ag5gkmgc5&sd=B&t=1632321925&u=1632321925&v=1; expires=Thu, 22 Sep 2022
+        14:45:25 GMT; domain=.yahoo.co.jp; path=/; httponly; secure
+      - B=5ht9ag5gkmgc5&b=3&s=2m; expires=Sat, 23 Sep 2023 14:45:25 GMT; path=/; domain=.yahoo.co.jp
+      - XA=5ht9ag5gkmgc5&sd=B&t=1632321925&u=1632321925&v=1; expires=Thu, 22 Sep 2022
+        14:45:25 GMT; domain=.yahoo.co.jp; path=/; httponly; secure; samesite=none
+      - XB=5ht9ag5gkmgc5&b=3&s=2m; expires=Sat, 23 Sep 2023 14:45:25 GMT; path=/;
+        domain=.yahoo.co.jp; secure; samesite=none
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+  recorded_at: Wed, 22 Sep 2021 14:45:25 GMT
+- request:
+    method: post
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemImagePack?seller_id=<YOUR_SELLER_ID>
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-685c9ce46e3d7721df82b0fa7f3e0582
+      Content-Length:
+      - '1805'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 22 Sep 2021 14:45:26 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '99'
+      Content-Type:
+      - application/xml
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ResultSet>
+          <Result>
+            <Status>OK</Status>
+          </Result>
+        </ResultSet>
+  recorded_at: Wed, 22 Sep 2021 14:45:26 GMT
+recorded_with: VCR 6.0.0
