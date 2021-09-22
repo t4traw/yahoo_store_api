@@ -24,6 +24,12 @@ class YahooStoreApiTest < Minitest::Test
     end
   end
 
+  def test_upload_item_file
+    VCR.use_cassette("item/test_upload_item_file") do
+      assert_equal "OK", client.upload_item_file("test/data/sample.csv").status
+    end
+  end
+
   def test_delete_item
     VCR.use_cassette("item/test_delete_item") do
       assert_equal "test_item", client.get_item("test1234").name

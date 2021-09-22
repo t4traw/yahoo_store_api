@@ -1,0 +1,113 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded;charset=UTF-8
+      User-Agent:
+      - Faraday v1.8.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '1774'
+      Date:
+      - Wed, 22 Sep 2021 06:35:20 GMT
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, private
+      - no-store, private
+      Pragma:
+      - no-cache
+      Vary:
+      - Accept-Encoding
+      Age:
+      - '0'
+      Server:
+      - ATS
+      Set-Cookie:
+      - A=676jj2lgkljl8&sd=B&t=1632292520&u=1632292520&v=1; expires=Thu, 22 Sep 2022
+        06:35:20 GMT; domain=.yahoo.co.jp; path=/; httponly; secure
+      - B=676jj2lgkljl8&b=3&s=uk; expires=Sat, 23 Sep 2023 06:35:20 GMT; path=/; domain=.yahoo.co.jp
+      - XA=676jj2lgkljl8&sd=B&t=1632292520&u=1632292520&v=1; expires=Thu, 22 Sep 2022
+        06:35:20 GMT; domain=.yahoo.co.jp; path=/; httponly; secure; samesite=none
+      - XB=676jj2lgkljl8&b=3&s=uk; expires=Sat, 23 Sep 2023 06:35:20 GMT; path=/;
+        domain=.yahoo.co.jp; secure; samesite=none
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"<ACCESS_TOKEN>"}'
+  recorded_at: Wed, 22 Sep 2021 06:35:20 GMT
+- request:
+    method: post
+    uri: https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemFile?seller_id=<YOUR_SELLER_ID>
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        LS0tLS0tLS0tLS0tLVJ1YnlNdWx0aXBhcnRQb3N0LWNjZmIyZjk2ZWFlMmVhN2ViODg5Y2JhMTlmM2Q5ZTgwDQpDb250ZW50LURpc3Bvc2l0aW9uOiBmb3JtLWRhdGE7IG5hbWU9InR5cGUiDQoNCjENCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdC1jY2ZiMmY5NmVhZTJlYTdlYjg4OWNiYTE5ZjNkOWU4MA0KQ29udGVudC1EaXNwb3NpdGlvbjogZm9ybS1kYXRhOyBuYW1lPSJmaWxlIjsgZmlsZW5hbWU9InNhbXBsZS5jc3YiDQpDb250ZW50LUxlbmd0aDogMzI5DQpDb250ZW50LVR5cGU6IHRleHQvY3N2DQpDb250ZW50LVRyYW5zZmVyLUVuY29kaW5nOiBiaW5hcnkNCg0KcGF0aCxuYW1lLGNvZGUscHJpY2Usc2FsZS1wcmljZSxzYWxlLXBlcmlvZC1zdGFydCxzYWxlLXBlcmlvZC1lbmQsY2FwdGlvbixleHBsYW5hdGlvbixtZXRhLWtleSxtZXRhLWRlc2MsamFuLGRlbGl2ZXJ5LHNhbGUtbGltaXQsZGlzcGxheSxzcC1hZGRpdGlvbmFsLHByb2R1Y3QtY2F0ZWdvcnksbGVhZC10aW1lLWluc3RvY2ssb3B0aW9ucyxzdWItY29kZSxzcGVjMSxzcGVjMixzcGVjMyxzcGVjNCxzcGVjNQqCu4LMkbwsg2WDWINnj6SVaSx0ZXN0MTIzNCwxMjM0LCwsLINlg1iDZ4+klWksg2WDWINnj6SVaSyDZYNYg2ePpJVpLCwsMSwsMSyDZYNYg2ePpJVpLCwxLCwsLCwsLAoNCi0tLS0tLS0tLS0tLS1SdWJ5TXVsdGlwYXJ0UG9zdC1jY2ZiMmY5NmVhZTJlYTdlYjg4OWNiYTE5ZjNkOWU4MC0tDQo=
+    headers:
+      User-Agent:
+      - Faraday v1.8.0
+      Content-Type:
+      - multipart/form-data; boundary=-----------RubyMultipartPost-ccfb2f96eae2ea7eb889cba19f3d9e80
+      Content-Length:
+      - '728'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 22 Sep 2021 06:35:21 GMT
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      P3p:
+      - policyref="http://privacy.yahoo.co.jp/w3c/p3p_jp.xml", CP="CAO DSP COR CUR
+        ADM DEV TAI PSA PSD IVAi IVDi CONi TELo OTPi OUR DELi SAMi OTRi UNRi PUBi
+        IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE GOV"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '99'
+      Content-Type:
+      - application/xml
+      Age:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ResultSet>
+          <Result>
+            <Status>OK</Status>
+          </Result>
+        </ResultSet>
+  recorded_at: Wed, 22 Sep 2021 06:35:21 GMT
+recorded_with: VCR 6.0.0
