@@ -15,6 +15,8 @@ Yahoo!ショッピング プロフェッショナル出店ストア向けAPIを�
   * 商品登録API(`set_item`)
   * 商品アップロードAPI(`upload_item_file`)
   * 商品削除API(`delete_item`)
+* 画像に関連するAPI
+  * 商品画像一括アップロードAPI(`upload_item_image_pack`)
 * 在庫に関連するAPI
   * 在庫参照API(`get_stock`)
   * 在庫更新API(`set_stock`)
