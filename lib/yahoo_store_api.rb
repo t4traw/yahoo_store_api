@@ -1,6 +1,7 @@
 require "yahoo_store_api/version"
 require "yahoo_store_api/helper.rb"
 require "yahoo_store_api/item.rb"
+require "yahoo_store_api/image.rb"
 require "yahoo_store_api/stock.rb"
 require "yahoo_store_api/publish.rb"
 
@@ -17,6 +18,7 @@ module YahooStoreApi
   class Client
     attr_reader :refresh_token
     include YahooStoreApi::Item
+    include YahooStoreApi::Image
     include YahooStoreApi::Stock
     include YahooStoreApi::Publish
 
