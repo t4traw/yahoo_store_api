@@ -10,4 +10,6 @@
 
 .env
 .rbenv-gemsets
+.DS_Store
+*.csv
 sample.rb
