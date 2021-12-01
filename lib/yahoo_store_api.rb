@@ -32,7 +32,7 @@ module YahooStoreApi
 
     private
 
-    ACCESS_TOKEN_ENDPOINT = "https://auth.login.yahoo.co.jp/yconnect/v1/token".freeze
+    ACCESS_TOKEN_ENDPOINT = "https://auth.login.yahoo.co.jp/yconnect/v2/token".freeze
 
     def access_token_connection
       Faraday.new(url: ACCESS_TOKEN_ENDPOINT) do |c|
