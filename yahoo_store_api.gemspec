@@ -22,14 +22,14 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "faraday", "~> 1.8.0"
-  spec.add_dependency "activesupport", ">= 4.2.8"
-  spec.add_dependency "activemodel", ">= 4.2.8"
+  spec.add_dependency "activesupport", ">= 4.2.8", "< 7.0"
+  spec.add_dependency "activemodel", ">= 4.2.8", "< 7.0"
   spec.add_dependency "builder"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", ">= 12.3.3"
-  spec.add_development_dependency "pry", "~> 0.10.4"
-  spec.add_development_dependency "minitest", "~> 5.0"
+  spec.add_development_dependency "pry", "~> 0.14"
+  spec.add_development_dependency "minitest", "~> 5.12"
   spec.add_development_dependency "minitest-reporters"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "vcr"
