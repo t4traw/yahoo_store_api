@@ -37,7 +37,7 @@ module YahooStoreApi
     def access_token_connection
       Faraday.new(url: ACCESS_TOKEN_ENDPOINT) do |c|
         c.adapter Faraday.default_adapter
-        c.authorization :Basic, Base64.strict_encode64("#{@application_id}:#{@application_secret}")
+        c.request :authorization, :Basic, Base64.strict_encode64("#{@application_id}:#{@application_secret}")
         c.headers["Content-Type"] = "application/x-www-form-urlencoded;charset=UTF-8"
       end
     end
