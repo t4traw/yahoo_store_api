@@ -27,7 +27,7 @@ module YahooStoreApi
       @application_id = application_id
       @application_secret = application_secret
       @redirect_uri = redirect_uri ? "&redirect_uri=" + CGI.escape(redirect_uri) : nil
-      @access_token = reflesh_access_token(refresh_token) || get_access_token(authorization_code)
+      @access_token = refresh_access_token(refresh_token) || get_access_token(authorization_code)
     end
 
     private
@@ -50,7 +50,7 @@ module YahooStoreApi
       result[:access_token]
     end
 
-    def reflesh_access_token(refresh_token)
+    def refresh_access_token(refresh_token)
       param = "grant_type=refresh_token&refresh_token=#{refresh_token}"
       obj = access_token_connection.post { |r| r.body = param }
       result = hash_converter(obj)
