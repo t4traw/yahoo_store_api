@@ -4,9 +4,7 @@ module YahooStoreApi
 
     def connection(method, with_seller_id: false)
       url = ENDPOINT + method
-      if with_seller_id
-        url += "?seller_id=#{@seller_id}" if with_seller_id
-      end
+      url += "?seller_id=#{@seller_id}" if with_seller_id
 
       Faraday.new(url: url) do |c|
         c.request :multipart
