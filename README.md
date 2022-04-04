@@ -1,12 +1,19 @@
 # YahooStoreApi
 
+**⚠️Deprecated⚠️**
+
+YahooのAPI認証がv1からv2に移行しており、自分自身EC関連の業務から離れているため、メンテナンスができません。
+
+> 2021年8月3日をもちましてYahoo! ID連携 v1の新規の登録を終了いたしました。
+> 2022年4月27日にYahoo! ID連携 v1の利用を終了いたしますのでv2への移行が必要です。
+
+---
+
 [![Gem Version](https://badge.fury.io/rb/yahoo_store_api.svg)](https://badge.fury.io/rb/yahoo_store_api)
 [![Ruby](https://github.com/t4traw/yahoo_store_api/actions/workflows/main.yml/badge.svg)](https://github.com/t4traw/yahoo_store_api/actions/workflows/main.yml)
 [![Code Climate](https://codeclimate.com/github/t4traw/yahoo_store_api/badges/gpa.svg)](https://codeclimate.com/github/t4traw/yahoo_store_api)
 
 Yahoo!ショッピング プロフェッショナル出店ストア向けAPIを簡単に叩けるrubyラッパーです。
-
-現在開発中です🐛 まだ商品情報のCRUDと在庫情報の取得・更新、反映予約しかできません。順次機能追加をしていきたいと思います。
 
 ## できること
 
