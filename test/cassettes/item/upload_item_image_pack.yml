@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://auth.login.yahoo.co.jp/yconnect/v1/token
+    uri: https://auth.login.yahoo.co.jp/yconnect/v2/token
     body:
       encoding: UTF-8
       string: grant_type=refresh_token&refresh_token=<YOUR_REFRESH_TOKEN>
