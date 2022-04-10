@@ -46,8 +46,8 @@ module YahooStoreApi
       param = "grant_type=authorization_code&code=#{authorization_code}#{@redirect_uri}"
       response = access_token_connection.post { |r| r.body = param }
       result = JSON.parse response.body
-      @refresh_token = result[:refresh_token]
-      result[:access_token]
+      @refresh_token = result["refresh_token"]
+      result["access_token"]
     end
 
     def refresh_access_token(refresh_token)
@@ -55,7 +55,7 @@ module YahooStoreApi
       response = access_token_connection.post { |r| r.body = param }
       result = JSON.parse response.body
       @refresh_token = refresh_token
-      result[:access_token]
+      result["access_token"]
     end
   end
 end
