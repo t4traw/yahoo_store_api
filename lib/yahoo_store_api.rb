@@ -27,7 +27,7 @@ module YahooStoreApi
       @application_id = application_id
       @application_secret = application_secret
       @redirect_uri = redirect_uri ? "&redirect_uri=" + CGI.escape(redirect_uri) : nil
-      @access_token = refresh_access_token(refresh_token) || get_access_token(authorization_code)
+      @access_token = refresh_token.present? ? refresh_access_token(refresh_token) : get_access_token(authorization_code)
     end
 
     private
