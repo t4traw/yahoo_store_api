@@ -44,23 +44,18 @@ module YahooStoreApi
 
     def get_access_token(authorization_code)
       param = "grant_type=authorization_code&code=#{authorization_code}#{@redirect_uri}"
-      obj = access_token_connection.post { |r| r.body = param }
-      result = hash_converter(obj)
-      @refresh_token = result[:refresh_token]
-      result[:access_token]
+      response = access_token_connection.post { |r| r.body = param }
+      result = JSON.parse response.body
+      @refresh_token = result["refresh_token"]
+      result["access_token"]
     end
 
     def refresh_access_token(refresh_token)
       param = "grant_type=refresh_token&refresh_token=#{refresh_token}"
-      obj = access_token_connection.post { |r| r.body = param }
-      result = hash_converter(obj)
+      response = access_token_connection.post { |r| r.body = param }
+      result = JSON.parse response.body
       @refresh_token = refresh_token
-      result[:access_token]
-    end
-
-    def hash_converter(str)
-      ary = str.body.delete('"{}').split(/[:,]/)
-      ary.each_slice(2).map { |k, v| [k.to_sym, v] }.to_h
+      result["access_token"]
     end
   end
 end
