@@ -45,7 +45,7 @@ module YahooStoreApi
     def get_access_token(authorization_code)
       param = "grant_type=authorization_code&code=#{authorization_code}#{@redirect_uri}"
       response = access_token_connection.post { |r| r.body = param }
-      result = JSON.parse response.body
+      result = JSON.parse(response.body)
       @refresh_token = result["refresh_token"]
       result["access_token"]
     end
@@ -53,7 +53,7 @@ module YahooStoreApi
     def refresh_access_token(refresh_token)
       param = "grant_type=refresh_token&refresh_token=#{refresh_token}"
       response = access_token_connection.post { |r| r.body = param }
-      result = JSON.parse response.body
+      result = JSON.parse(response.body)
       @refresh_token = refresh_token
       result["access_token"]
     end
